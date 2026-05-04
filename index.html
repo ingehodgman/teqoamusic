@@ -723,34 +723,56 @@ footer::before {
   .hero-worlds { display: none !important; }
   .hero-worlds-mobile { display: grid !important; }
 
-  /* prevent hero title overflow */
+  /* HERO NAME — tighten spacing so it stays one line */
   .hero-name {
-    font-size: clamp(52px, 18vw, 90px) !important;
-    letter-spacing: 0.18em !important;
-    word-break: break-word;
+    font-size: clamp(44px, 14vw, 72px) !important;
+    letter-spacing: 0.14em !important;
   }
-  .hero-sub { font-size: clamp(14px, 4vw, 18px) !important; }
-  .hero-eyebrow { font-size: 9px; }
+  .hero-sub { font-size: clamp(13px, 3.5vw, 17px) !important; }
+  .hero-eyebrow { font-size: 8.5px; letter-spacing: 0.28em; }
+  .hero { padding-top: 90px; }
 
-  /* section tags */
-  .section-tag { font-size: 8.5px; letter-spacing: 0.2em; }
+  /* SECTION TAGS */
+  .section-tag { font-size: 8px; letter-spacing: 0.18em; }
 
-  /* testimony */
-  .testimony-pull { font-size: clamp(20px, 5.5vw, 30px) !important; }
-  .testimony-body { font-size: 16px; }
-  .tm-text { font-size: 16px; }
+  /* TESTIMONY */
+  .testimony-section { padding: 3.5rem 1.2rem; }
+  .testimony-pull { font-size: clamp(20px, 5.5vw, 28px) !important; margin-bottom: 28px; }
+  .testimony-body { font-size: 16px; line-height: 1.75; margin-bottom: 20px; }
+  .tm-text { font-size: 15px; line-height: 1.7; }
+  .testimony-manna { margin: 28px 0; padding: 14px 16px; }
 
-  /* worlds intro */
-  .worlds-intro-title { font-size: clamp(22px, 5vw, 30px) !important; }
+  /* CROSSING */
+  .crossing-title { font-size: clamp(26px, 7vw, 38px) !important; }
+  .crossing-sub { font-size: 16px; }
+
+  /* WORLDS */
+  .worlds-section { padding: 3.5rem 1.2rem; }
+  .worlds-intro-title { font-size: clamp(22px, 5.5vw, 30px) !important; }
   .worlds-intro-text { font-size: 16px; }
+  .wc-name { font-size: 20px; letter-spacing: 0.12em; }
+  .wc-text { font-size: 14px; }
+  .wc-father-text { font-size: 13px; }
 
-  /* sound */
+  /* SOUND */
+  .sound-section { padding: 3.5rem 1.2rem; }
   .sound-title { font-size: clamp(20px, 5vw, 28px) !important; }
   .sound-sub { font-size: 15px; }
-  .sound-quote { font-size: 16px; }
+  .sound-quote { font-size: 15px; }
 
-  /* manna */
-  .manna-quote { font-size: clamp(20px, 5vw, 28px) !important; }
+  /* MANNA */
+  .manna-section { padding: 3.5rem 1.2rem; }
+  .manna-quote { font-size: clamp(20px, 5.5vw, 28px) !important; line-height: 1.55; }
+
+  /* KOACH CREATIVE — force single column */
+  .koach-section-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  /* also fix the inner comparison card inline styles */
+  .koach-section-grid > div:last-child > div {
+    padding: 24px 20px !important;
+  }
 }
 </style>
 </head>
