@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TEQOA — Prophetic music born in the wilderness. Six worlds. A healing journey. A promised land of identity.">
+<title>TEQOA — Sound from the Edge of the Wilderness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   FOUNDATIONS
+═══════════════════════════════════════════ */
+:root {
+  --cream:     #f8f4ee;
+  --parchment: #f0ebe0;
+  --warm:      #e8e2d4;
+  --text:      #26211c;
+  --text-mid:  #6a6258;
+  --text-soft: #a09890;
+  --border:    rgba(38,33,28,0.1);
+  --border-mid:rgba(38,33,28,0.16);
+
+  --rechem:   #2a7a5c;
+  --demamah:  #6a6560;
+  --shamar:   #2c5888;
+  --marot:    #8a3a68;
+  --devorah:  #8a5e10;
+  --azarah:   #8a6010;
+
+  --gold:     #c09030;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* grain over everything */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 3rem;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(248,244,238,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 80px 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hero wash */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 900px; height: 900px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse,
+    rgba(192,144,48,0.08) 0%,
+    rgba(160,200,180,0.06) 35%,
+    transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.3s ease forwards;
+}
+
+.hero-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(72px, 14vw, 140px);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s ease forwards;
+}
+
+.hero-sub {
+  font-style: italic;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 300;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s ease forwards;
+}
+
+/* world dot strip */
+.hero-worlds {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s ease forwards;
+}
+.hw-item {
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  padding: 0 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.hw-item:hover { transform: translateY(-3px); }
+.hw-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  transition: transform 0.2s;
+}
+.hw-name {
+  font-family: 'Cinzel', serif;
+  font-size: 8px; letter-spacing: 0.14em;
+  color: var(--text-soft);
+}
+.hw-connector {
+  width: 40px; height: 1px;
+  background: var(--border);
+}
+
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0;
+  animation: fadeUp 0.9s 1.2s ease forwards;
+}
+.scroll-line {
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, var(--text-soft), transparent);
+  animation: scrollPulse 2s 1.5s infinite;
+}
+.scroll-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 8.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-soft);
+}
+
+/* ═══════════════════════════════════════════
+   TESTIMONY
+═══════════════════════════════════════════ */
+.testimony-section {
+  padding: 8rem 0;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: 2rem; padding-right: 2rem;
+}
+
+.section-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-soft);
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 48px;
+}
+.section-tag::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.testimony-pull {
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 42px;
+  letter-spacing: 0.01em;
+}
+
+.testimony-pull em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.testimony-body {
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--text-mid);
+  margin-bottom: 28px;
+}
+.testimony-body strong { font-weight: 600; color: var(--text); }
+.testimony-body em { font-style: italic; }
+
+.testimony-manna {
+  border-left: 2px solid var(--gold);
+  padding: 20px 28px;
+  background: rgba(192,144,48,0.04);
+  border-radius: 0 6px 6px 0;
+  margin: 40px 0;
+}
+.tm-text {
+  font-style: italic;
+  font-size: 20px; font-weight: 300;
+  line-height: 1.75; color: var(--text-mid);
+}
+.tm-text strong { font-weight: 600; color: var(--text); font-style: normal; }
+
+/* ═══════════════════════════════════════════
+   THE CROSSING — arc visual
+═══════════════════════════════════════════ */
+.crossing-section {
+  background: var(--text);
+  padding: 7rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.crossing-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(192,144,48,0.1) 0%, transparent 65%);
+}
+.crossing-inner {
+  position: relative; z-index: 1;
+  max-width: 700px; margin: 0 auto;
+}
+.crossing-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-bottom: 28px;
+}
+.crossing-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 400; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.3; margin-bottom: 18px;
+}
+.crossing-sub {
+  font-style: italic; font-size: 20px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 52px; letter-spacing: 0.03em;
+}
+/* arc path */
+.arc-path {
+  display: flex; align-items: center;
+  justify-content: center; gap: 0;
+  margin-bottom: 20px;
+}
+.ap-world {
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+}
+.ap-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 10px; color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.04);
+  transition: all 0.3s; cursor: pointer;
+}
+.ap-circle:hover {
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+.ap-name {
+  font-family: 'Cinzel', serif;
+  font-size: 7.5px; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+}
+.ap-line {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,0.1);
+  max-width: 48px;
+}
+.crossing-destination {
+  font-family: 'Cinzel', serif;
+  font-size: 11px; letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(192,144,48,0.7);
+  margin-top: 32px;
+}
+
+/* ═══════════════════════════════════════════
+   SIX WORLDS
+═══════════════════════════════════════════ */
+.worlds-section {
+  padding: 8rem 2rem;
+  max-width: 1060px; margin: 0 auto;
+}
+
+.worlds-intro {
+  max-width: 580px; margin-bottom: 5rem;
+}
+.worlds-intro-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 400; letter-spacing: 0.08em;
+  color: var(--text); margin-bottom: 16px; line-height: 1.3;
+}
+.worlds-intro-text {
+  font-size: 18px; font-weight: 300;
+  line-height: 1.82; color: var(--text-mid);
+}
+
+/* world cards grid */
+.worlds-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.world-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 36px 38px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.world-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.world-card:hover::before { transform: scaleX(1); }
+.world-card:hover { box-shadow: 0 8px 40px rgba(38,33,28,0.08); z-index: 1; }
+
+.wc-season {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; font-weight: 300;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-soft); margin-bottom: 14px;
+}
+.wc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.wc-name {
+  font-family: 'Cinzel', serif;
+  font-size: 26px; font-weight: 500;
+  letter-spacing: 0.16em; line-height: 1;
+}
+.wc-hebrew {
+  font-size: 36px; line-height: 1;
+  opacity: 0.14; letter-spacing: 0;
+}
+.wc-verbs {
+  font-style: italic; font-size: 13px;
+  font-weight: 300; color: var(--text-soft);
+  margin-bottom: 18px; letter-spacing: 0.04em;
+}
+.wc-title {
+  font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; margin-bottom: 12px;
+  opacity: 0.4;
+}
+.wc-text {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.78; color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.wc-text strong { font-weight: 600; color: var(--text); }
+
+.wc-father {
+  border-left: 1.5px solid;
+  padding: 10px 14px;
+  border-radius: 0 4px 4px 0;
+}
+.wc-father-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 7.5px; letter-spacing: 0.22em;
+  text-transform: uppercase; opacity: 0.35; margin-bottom: 6px;
+}
+.wc-father-text {
+  font-style: italic; font-size: 14px;
+  font-weight: 300; line-height: 1.68;
+  opacity: 0.72;
+}
+
+/* expanded state */
+.world-card .wc-expand { display: none; }
+.world-card.expanded .wc-expand { display: block; }
+.world-card.expanded { grid-column: span 2; }
+
+.wc-toggle {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 20px;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-soft);
+  background: none; border: none; cursor: pointer;
+  padding: 0; transition: color 0.2s;
+}
+.wc-toggle:hover { color: var(--text); }
+.wc-toggle-line { flex: 1; height: 1px; background: var(--border); max-width: 40px; }
+
+/* world colours */
+.wc-rechem .wc-name  { color: var(--rechem); }
+.wc-rechem .wc-hebrew { color: var(--rechem); }
+.wc-rechem .wc-father { border-color: #7abda0; background: rgba(42,122,92,0.04); color: var(--rechem); }
+.wc-rechem::before { background: var(--rechem); }
+
+.wc-demamah .wc-name  { color: var(--demamah); }
+.wc-demamah .wc-hebrew { color: var(--demamah); }
+.wc-demamah .wc-father { border-color: #b0a898; background: rgba(106,101,96,0.04); color: var(--demamah); }
+.wc-demamah::before { background: var(--demamah); }
+
+.wc-shamar .wc-name  { color: var(--shamar); }
+.wc-shamar .wc-hebrew { color: var(--shamar); }
+.wc-shamar .wc-father { border-color: #88aad4; background: rgba(44,88,136,0.04); color: var(--shamar); }
+.wc-shamar::before { background: var(--shamar); }
+
+.wc-marot .wc-name  { color: var(--marot); }
+.wc-marot .wc-hebrew { color: var(--marot); }
+.wc-marot .wc-father { border-color: #c898b8; background: rgba(138,58,104,0.04); color: var(--marot); }
+.wc-marot::before { background: var(--marot); }
+
+.wc-devorah .wc-name  { color: var(--devorah); }
+.wc-devorah .wc-hebrew { color: var(--devorah); }
+.wc-devorah .wc-father { border-color: #d4a848; background: rgba(138,94,16,0.04); color: var(--devorah); }
+.wc-devorah::before { background: var(--devorah); }
+
+.wc-azarah .wc-name  { color: var(--azarah); }
+.wc-azarah .wc-hebrew { color: var(--azarah); }
+.wc-azarah .wc-father { border-color: #d4b458; background: rgba(138,96,16,0.04); color: var(--azarah); }
+.wc-azarah::before { background: var(--azarah); }
+
+/* ═══════════════════════════════════════════
+   SOUND SECTION
+═══════════════════════════════════════════ */
+.sound-section {
+  background: var(--parchment);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 7rem 2rem;
+  text-align: center;
+}
+.sound-inner { max-width: 660px; margin: 0 auto; }
+.sound-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 400; letter-spacing: 0.1em;
+  color: var(--text); margin-bottom: 16px; line-height: 1.35;
+}
+.sound-sub {
+  font-style: italic; font-size: 18px; font-weight: 300;
+  color: var(--text-mid); line-height: 1.78; margin-bottom: 44px;
+}
+
+.genre-row {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 8px; margin-bottom: 44px;
+}
+.genre-pill {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; font-weight: 300;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 8px 18px; border-radius: 20px;
+  border: 1px solid var(--border-mid);
+  color: var(--text-mid); background: white;
+  transition: all 0.2s;
+}
+.genre-pill:hover { background: var(--text); color: white; border-color: var(--text); }
+
+.sound-quote {
+  font-style: italic; font-size: 20px; font-weight: 300;
+  color: var(--text); line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════
+   MANNA QUOTE — full width
+═══════════════════════════════════════════ */
+.manna-section {
+  padding: 7rem 2rem;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+}
+.manna-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--text-soft);
+  margin-bottom: 36px;
+}
+.manna-quote {
+  font-style: italic;
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 300; line-height: 1.6;
+  color: var(--text); max-width: 740px;
+  margin-bottom: 24px;
+}
+.manna-quote em { color: var(--gold); font-style: normal; }
+.manna-attr {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--text-soft);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER / SOCIAL
+═══════════════════════════════════════════ */
+footer {
+  background: var(--text);
+  padding: 5rem 2rem 3.5rem;
+  color: white;
+  position: relative; overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%,
+    rgba(192,144,48,0.08) 0%, transparent 60%);
+}
+.footer-inner {
+  position: relative; z-index: 1;
+  max-width: 860px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-left {}
+.footer-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 32px; font-weight: 500;
+  letter-spacing: 0.38em; color: white;
+  opacity: 0.9; margin-bottom: 10px;
+}
+.footer-tagline {
+  font-style: italic; font-size: 14px;
+  color: rgba(255,255,255,0.4); letter-spacing: 0.05em;
+  margin-bottom: 28px;
+}
+.footer-testimony {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.8; color: rgba(255,255,255,0.5);
+}
+.footer-testimony strong { color: rgba(255,255,255,0.75); font-weight: 400; }
+
+.footer-right { padding-top: 6px; }
+.footer-section-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.26em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-bottom: 20px;
+}
+.social-links {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.social-link {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  transition: all 0.2s;
+  background: rgba(255,255,255,0.02);
+}
+.social-link:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.16);
+}
+.sl-icon {
+  width: 16px; height: 16px;
+  flex-shrink: 0; opacity: 0.5;
+}
+.sl-platform {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+}
+.sl-handle {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.35);
+  margin-left: auto; font-style: italic;
+}
+
+.footer-bottom {
+  position: relative; z-index: 1;
+  max-width: 860px; margin: 0 auto;
+  padding-top: 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy {
+  font-family: 'Jost', sans-serif;
+  font-size: 9.5px; color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+}
+.footer-worlds {
+  display: flex; gap: 8px;
+}
+.fw-dot { width: 6px; height: 6px; border-radius: 50%; opacity: 0.4; }
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* scroll-reveal */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .worlds-grid { grid-template-columns: 1fr; }
+  .world-card.expanded { grid-column: span 1; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hw-connector { width: 20px; }
+  .hw-item { padding: 0 10px; }
+  .crossing-section { padding: 5rem 1.5rem; }
+  .ap-line { max-width: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">TEQOA</a>
+  <ul class="nav-links">
+    <li><a href="#testimony">Testimony</a></li>
+    <li><a href="#worlds">Six Worlds</a></li>
+    <li><a href="#sound">The Sound</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-eyebrow">A daughter's healing journey · Prophetic Music</div>
+  <h1 class="hero-name">TEQOA</h1>
+  <p class="hero-sub">sound from the edge of the wilderness</p>
+
+  <div class="hero-worlds">
+    <div class="hw-item" onclick="scrollToWorld('rechem')">
+      <div class="hw-dot" style="background:#2a7a5c;"></div>
+      <div class="hw-name">Rechem</div>
+    </div>
+    <div class="hw-connector"></div>
+    <div class="hw-item" onclick="scrollToWorld('demamah')">
+      <div class="hw-dot" style="background:#6a6560;"></div>
+      <div class="hw-name">Demamah</div>
+    </div>
+    <div class="hw-connector"></div>
+    <div class="hw-item" onclick="scrollToWorld('shamar')">
+      <div class="hw-dot" style="background:#2c5888;"></div>
+      <div class="hw-name">Shamar</div>
+    </div>
+    <div class="hw-connector"></div>
+    <div class="hw-item" onclick="scrollToWorld('marot')">
+      <div class="hw-dot" style="background:#8a3a68;"></div>
+      <div class="hw-name">Mar'ot</div>
+    </div>
+    <div class="hw-connector"></div>
+    <div class="hw-item" onclick="scrollToWorld('devorah')">
+      <div class="hw-dot" style="background:#8a5e10;"></div>
+      <div class="hw-name">Devorah</div>
+    </div>
+    <div class="hw-connector"></div>
+    <div class="hw-item" onclick="scrollToWorld('azarah')">
+      <div class="hw-dot" style="background:#8a6010;"></div>
+      <div class="hw-name">Azarah</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONY ═══ -->
+<section class="testimony-section" id="testimony">
+  <div class="section-tag reveal">A Personal Testimony</div>
+
+  <div class="testimony-pull reveal reveal-delay-1">
+    "This music was not made in a studio.<br>
+    It was made in the <em>wilderness</em>."
+  </div>
+
+  <p class="testimony-body reveal reveal-delay-2">
+    I didn't set out to make music. I set out to survive. I walked through seasons of losing myself — of pain I couldn't name, of love I thought I had to earn, of long nights waiting for something to shift. I sat under my own broom tree more than once and told God I had had enough.
+  </p>
+
+  <p class="testimony-body reveal">
+    And in those places — the dark ones, the honest ones, the quiet ones — <strong>He found me</strong>. He showed me I was loved before I could earn it, known before I had a name, and that everything I had walked through <strong>had a purpose</strong>.
+  </p>
+
+  <div class="testimony-manna reveal">
+    <div class="tm-text">Every day in the wilderness, the Father gave me something to sustain me. A word. A moment. A sound. <strong>Manna.</strong> This music is that manna — gathered and set to sound, so you would have something to eat on the way through yours.</div>
+  </div>
+
+  <p class="testimony-body reveal">
+    The destination was never just healing. It was <strong>identity</strong>. Crossing over into the promised land of knowing — truly knowing — whose you are and who He made you to be. A daughter. <em>Fully known. Fully loved. Fully free.</em>
+  </p>
+</section>
+
+<!-- ═══ THE CROSSING ═══ -->
+<section class="crossing-section">
+  <div class="crossing-inner">
+    <div class="crossing-tag">The Journey</div>
+    <h2 class="crossing-title">From Wilderness<br>to Promised Land</h2>
+    <p class="crossing-sub">Six seasons. Six Hebrew words. One crossing.</p>
+
+    <div class="arc-path">
+      <div class="ap-world">
+        <div class="ap-circle" style="border-color:rgba(42,122,92,0.5);color:#4a9a78;" onclick="scrollToWorld('rechem')">I</div>
+        <div class="ap-name" style="color:rgba(74,154,120,0.6);">Rechem</div>
+      </div>
+      <div class="ap-line"></div>
+      <div class="ap-world">
+        <div class="ap-circle" style="border-color:rgba(106,101,96,0.5);color:#8a8278;" onclick="scrollToWorld('demamah')">II</div>
+        <div class="ap-name" style="color:rgba(138,130,120,0.6);">Demamah</div>
+      </div>
+      <div class="ap-line"></div>
+      <div class="ap-world">
+        <div class="ap-circle" style="border-color:rgba(44,88,136,0.5);color:#82aad8;" onclick="scrollToWorld('shamar')">III</div>
+        <div class="ap-name" style="color:rgba(130,170,216,0.6);">Shamar</div>
+      </div>
+      <div class="ap-line"></div>
+      <div class="ap-world">
+        <div class="ap-circle" style="border-color:rgba(138,58,104,0.5);color:#d890b8;" onclick="scrollToWorld('marot')">IV</div>
+        <div class="ap-name" style="color:rgba(216,144,184,0.6);">Mar'ot</div>
+      </div>
+      <div class="ap-line"></div>
+      <div class="ap-world">
+        <div class="ap-circle" style="border-color:rgba(138,94,16,0.5);color:#e0a840;" onclick="scrollToWorld('devorah')">V</div>
+        <div class="ap-name" style="color:rgba(224,168,64,0.6);">Devorah</div>
+      </div>
+      <div class="ap-line"></div>
+      <div class="ap-world">
+        <div class="ap-circle" style="border-color:rgba(138,96,16,0.5);color:#e8c070;" onclick="scrollToWorld('azarah')">VI</div>
+        <div class="ap-name" style="color:rgba(232,192,112,0.6);">Azarah</div>
+      </div>
+    </div>
+
+    <div class="crossing-destination">↓ &nbsp; Identity &nbsp; · &nbsp; The Promised Land &nbsp; ↓</div>
+  </div>
+</section>
+
+<!-- ═══ SIX WORLDS ═══ -->
+<section class="worlds-section" id="worlds">
+
+  <div class="worlds-intro reveal">
+    <div class="section-tag">Six Prophetic Worlds</div>
+    <h2 class="worlds-intro-title">Ancient Hebrew words.<br>Ancient truth. Set to sound.</h2>
+    <p class="worlds-intro-text">Each world is a season of the healing journey — a place where the Father meets His daughter. Click each world to go deeper.</p>
+  </div>
+
+  <div class="worlds-grid">
+
+    <!-- RECHEM -->
+    <div class="world-card wc-rechem reveal" id="world-rechem">
+      <div class="wc-season">Season I · She Is Formed</div>
+      <div class="wc-top">
+        <div>
+          <div class="wc-name">RECHEM</div>
+          <div class="wc-verbs">she heals · she holds · she forms</div>
+        </div>
+        <div class="wc-hebrew">רֶחֶם</div>
+      </div>
+      <div class="wc-title">Womb · Compassion</div>
+      <p class="wc-text">The journey begins not with doing but with <strong>receiving</strong>. Before the wound, before the performance, before she learned to earn her place — she was woven together and known. Healing starts when you stop trying to earn what was always yours.</p>
+      <div class="wc-expand">
+        <div class="wc-father">
+          <div class="wc-father-label">What the Father says</div>
+          <div class="wc-father-text">"You did not have to earn this. I knew you before you had a name. You are mine — not because of what you've become, but because I made you."</div>
+        </div>
+        <br>
+        <p class="wc-text" style="font-style:italic;opacity:0.6;">Psalm 139:13 — "You knit me together in my mother's womb."</p>
+      </div>
+      <button class="wc-toggle" onclick="toggleWorld(this)">
+        <div class="wc-toggle-line"></div>
+        <span class="wc-toggle-text">Read more</span>
+        <div class="wc-toggle-line"></div>
+      </button>
+    </div>
+
+    <!-- DEMAMAH -->
+    <div class="world-card wc-demamah reveal reveal-delay-1" id="world-demamah">
+      <div class="wc-season">Season II · She Is Honest</div>
+      <div class="wc-top">
+        <div>
+          <div class="wc-name">DEMAMAH</div>
+          <div class="wc-verbs">she speaks · she listens · she rests</div>
+        </div>
+        <div class="wc-hebrew">דְּמָמָה</div>
+      </div>
+      <div class="wc-title">Thin Silence · Still Voice</div>
+      <p class="wc-text">She stops performing. She sits in the dirt of exactly where she is and tells the truth. <strong>The Father is not frightened by her exhaustion.</strong> He comes to her there — with gentleness, not rebuke. Her honesty is the door He walks through.</p>
+      <div class="wc-expand">
+        <div class="wc-father">
+          <div class="wc-father-label">What the Father says</div>
+          <div class="wc-father-text">"What are you doing here?" — asked not in accusation but in the gentlest possible voice. Her honesty is not weakness. It is the door through which He enters.</div>
+        </div>
+        <br>
+        <p class="wc-text" style="font-style:italic;opacity:0.6;">1 Kings 19:12 — "After the fire: a still small voice."</p>
+      </div>
+      <button class="wc-toggle" onclick="toggleWorld(this)">
+        <div class="wc-toggle-line"></div>
+        <span class="wc-toggle-text">Read more</span>
+        <div class="wc-toggle-line"></div>
+      </button>
+    </div>
+
+    <!-- SHAMAR -->
+    <div class="world-card wc-shamar reveal" id="world-shamar">
+      <div class="wc-season">Season III · She Keeps Watch</div>
+      <div class="wc-top">
+        <div>
+          <div class="wc-name">SHAMAR</div>
+          <div class="wc-verbs">she watches · she guards · she stays</div>
+        </div>
+        <div class="wc-hebrew">שָׁמַר</div>
+      </div>
+      <div class="wc-title">To Watch · To Keep · To Guard</div>
+      <p class="wc-text">The long middle. The season that doesn't look like progress but is quietly doing the deepest work. She is learning that <strong>hiddenness is not abandonment</strong> — every 3am prayer, every vigil, every unseen faithful act is witnessed by the Father.</p>
+      <div class="wc-expand">
+        <div class="wc-father">
+          <div class="wc-father-label">What the Father says</div>
+          <div class="wc-father-text">"I see you in the night. You are not forgotten — you are stationed. The watching is the work. The staying is the ministry."</div>
+        </div>
+        <br>
+        <p class="wc-text" style="font-style:italic;opacity:0.6;">Psalm 134:1 — "All you servants who minister by night in the house of the Lord."</p>
+      </div>
+      <button class="wc-toggle" onclick="toggleWorld(this)">
+        <div class="wc-toggle-line"></div>
+        <span class="wc-toggle-text">Read more</span>
+        <div class="wc-toggle-line"></div>
+      </button>
+    </div>
+
+    <!-- MAR'OT -->
+    <div class="world-card wc-marot reveal reveal-delay-1" id="world-marot">
+      <div class="wc-season">Season IV · She Receives Vision</div>
+      <div class="wc-top">
+        <div>
+          <div class="wc-name">MAR'OT</div>
+          <div class="wc-verbs">she sees · she dreams · she enters</div>
+        </div>
+        <div class="wc-hebrew">מַרְאוֹת</div>
+      </div>
+      <div class="wc-title">Visions · Plural Sight</div>
+      <p class="wc-text">After the long watching, her eyes begin to open. The Father begins to show her who she truly is — <strong>not the image the wound painted</strong>, but the truth He has always held. Identity is slowly, tenderly restored from the inside out.</p>
+      <div class="wc-expand">
+        <div class="wc-father">
+          <div class="wc-father-label">What the Father says</div>
+          <div class="wc-father-text">"Let me show you who you are." The visions of Mar'ot are not about the future first — they are about identity recovered. He shows her what He has always seen.</div>
+        </div>
+        <br>
+        <p class="wc-text" style="font-style:italic;opacity:0.6;">Numbers 12:6 — "I the Lord reveal myself to them in visions."</p>
+      </div>
+      <button class="wc-toggle" onclick="toggleWorld(this)">
+        <div class="wc-toggle-line"></div>
+        <span class="wc-toggle-text">Read more</span>
+        <div class="wc-toggle-line"></div>
+      </button>
+    </div>
+
+    <!-- DEVORAH -->
+    <div class="world-card wc-devorah reveal" id="world-devorah">
+      <div class="wc-season">Season V · She Rises</div>
+      <div class="wc-top">
+        <div>
+          <div class="wc-name">DEVORAH</div>
+          <div class="wc-verbs">she fights · she leads · she rises</div>
+        </div>
+        <div class="wc-hebrew">דְּבוֹרָה</div>
+      </div>
+      <div class="wc-title">Arise · Mother in Israel</div>
+      <p class="wc-text">She carries every scar — but what was broken has become her <strong>authority</strong>. She rises not from striving but from the deep settled security of a daughter who knows whose she is. The wound is not hidden. It has been <strong>redeemed</strong>.</p>
+      <div class="wc-expand">
+        <div class="wc-father">
+          <div class="wc-father-label">What the Father says</div>
+          <div class="wc-father-text">"Arise, daughter. Not because you have it all together — but because I have gone ahead of you. Has not the Lord gone before you?"</div>
+        </div>
+        <br>
+        <p class="wc-text" style="font-style:italic;opacity:0.6;">Judges 5:7 — "Until I, Deborah, arose — arose a mother in Israel."</p>
+      </div>
+      <button class="wc-toggle" onclick="toggleWorld(this)">
+        <div class="wc-toggle-line"></div>
+        <span class="wc-toggle-text">Read more</span>
+        <div class="wc-toggle-line"></div>
+      </button>
+    </div>
+
+    <!-- AZARAH -->
+    <div class="world-card wc-azarah reveal reveal-delay-1" id="world-azarah">
+      <div class="wc-season">Season VI · She Gathers</div>
+      <div class="wc-top">
+        <div>
+          <div class="wc-name">AZARAH</div>
+          <div class="wc-verbs">she gathers · she courts · she celebrates</div>
+        </div>
+        <div class="wc-hebrew">עֲזָרָה</div>
+      </div>
+      <div class="wc-title">The Court · The Gathering Place</div>
+      <p class="wc-text">She opens her arms. Not because the healing is complete — but because she has walked far enough to reach back and say: <em>come. there is a way through.</em> Her healed life has become an <strong>open door</strong>. The court is built. Everyone can enter.</p>
+      <div class="wc-expand">
+        <div class="wc-father">
+          <div class="wc-father-label">What the Father says</div>
+          <div class="wc-father-text">"Now build the court. You did not walk through the fire to stand alone on the other side — you walked through it so others could follow you through."</div>
+        </div>
+        <br>
+        <p class="wc-text" style="font-style:italic;opacity:0.6;">2 Chronicles 5:13 — "The trumpeters and musicians joined as one — the glory of the Lord filled the temple."</p>
+      </div>
+      <button class="wc-toggle" onclick="toggleWorld(this)">
+        <div class="wc-toggle-line"></div>
+        <span class="wc-toggle-text">Read more</span>
+        <div class="wc-toggle-line"></div>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SOUND ═══ -->
+<section class="sound-section" id="sound">
+  <div class="sound-inner">
+    <div class="section-tag reveal" style="justify-content:center;">The Sound</div>
+    <h2 class="sound-title reveal">Healing is not one sound.<br>It is all of them.</h2>
+    <p class="sound-sub reveal reveal-delay-1">Ancient Hebrew words. Ancient truth. Set to music that moves your body and reaches the places words alone cannot touch.</p>
+    <div class="genre-row reveal reveal-delay-2">
+      <span class="genre-pill">Prophetic EDM</span>
+      <span class="genre-pill">Bioacoustic Worship</span>
+      <span class="genre-pill">Indie Folk</span>
+      <span class="genre-pill">Minimal Techno</span>
+      <span class="genre-pill">World Music</span>
+      <span class="genre-pill">Sacred Soundscape</span>
+    </div>
+    <p class="sound-quote reveal reveal-delay-3">"Music that sounds like the wilderness and the womb<br>and the war cry and the gathering — all at once."</p>
+  </div>
+</section>
+
+<!-- ═══ MANNA QUOTE ═══ -->
+<section class="manna-section">
+  <div class="manna-label reveal">The Heart of TEQOA</div>
+  <div class="manna-quote reveal reveal-delay-1">
+    "I made it in the wilderness<br>so you would have something<br>to <em>eat on the way</em>."
+  </div>
+  <div class="manna-attr reveal reveal-delay-2">Inge · TEQOA</div>
+</section>
+
+<!-- ═══ FOOTER / SOCIAL ═══ -->
+<!-- ═══ KOACH CREATIVE ═══ -->
+<section style="background:var(--parchment);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6rem 2rem;">
+  <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <div class="reveal">
+      <div class="section-tag" style="margin-bottom:28px;">The Ministry Behind the Music</div>
+      <h2 style="font-family:'Cinzel',serif;font-size:clamp(24px,3.5vw,34px);font-weight:400;letter-spacing:0.1em;color:var(--text);line-height:1.35;margin-bottom:16px;">Koach Creative</h2>
+      <p style="font-style:italic;font-size:15px;font-weight:300;color:var(--text-soft);letter-spacing:0.05em;margin-bottom:22px;">prophetic healing ministry · The Restored Mind</p>
+      <p style="font-size:17px;font-weight:300;line-height:1.85;color:var(--text-mid);margin-bottom:22px;">TEQOA did not emerge in isolation. It is the <strong style="color:var(--text);font-weight:600;">musical heartbeat</strong> of Koach Creative — a prophetic healing ministry built on the same journey, the same testimony, the same truth.</p>
+      <p style="font-size:17px;font-weight:300;line-height:1.85;color:var(--text-mid);margin-bottom:30px;">Where Koach Creative offers teaching, community, and a structured course to walk you through the healing journey — <strong style="color:var(--text);font-weight:600;">TEQOA is the manna for the road</strong>. The sound that sustains you between sessions, in the night hours, in the wilderness stretches where words are not enough.</p>
+      <a href="https://ingequest.gumroad.com/l/brtjp" target="_blank" style="display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border-mid);padding-bottom:3px;">
+        Get The Restored Mind Course
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div style="background:white;border:1px solid var(--border);border-radius:4px;padding:32px 34px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c09030,#4a9a78);"></div>
+        <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-soft);margin-bottom:18px;">Two expressions · One testimony</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:3px;min-height:56px;background:#c09030;border-radius:2px;flex-shrink:0;margin-top:3px;"></div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;color:var(--text);margin-bottom:5px;">Koach Creative</div>
+              <div style="font-size:14px;font-weight:300;line-height:1.7;color:var(--text-mid);">Teaching, course, community. The word that walks you through the healing journey — structured, deep, transformative.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:3px;min-height:56px;background:#4a9a78;border-radius:2px;flex-shrink:0;margin-top:3px;"></div>
+            <div>
+              <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;color:var(--text);margin-bottom:5px;">TEQOA</div>
+              <div style="font-size:14px;font-weight:300;line-height:1.7;color:var(--text-mid);">Prophetic music. The manna for the road. Sound that sustains you in the places words alone cannot reach.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--border);font-style:italic;font-size:14px;font-weight:300;color:var(--text-soft);line-height:1.65;">"The same wilderness. The same Father. The same crossing.<br>One in word — one in sound."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="connect">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo">TEQOA</div>
+      <div class="footer-tagline">sound from the edge of the wilderness</div>
+      <p class="footer-testimony">
+        Six worlds. A wilderness crossing. A promised land of identity.<br><br>
+        <strong>If you are in the wilderness right now — you are not lost. You are crossing over.</strong><br><br>
+        This music is your manna for the journey.
+      </p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-section-title">Connect with TEQOA</div>
+      <div class="social-links">
+
+        <a href="https://youtube.com/@ingeleinhodgman?si=GrQ2LkeqMzeH7ajb" target="_blank" class="social-link">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(255,255,255,0.5)" stroke="none"/></svg>
+          <span class="sl-platform">YouTube</span>
+          <span class="sl-handle">@ingeleinhodgman</span>
+        </a>
+
+        <a href="https://suno.com/@ingehodgman" target="_blank" class="social-link">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span class="sl-platform">Suno</span>
+          <span class="sl-handle">@ingehodgman</span>
+        </a>
+
+        <a href="https://ingequest.gumroad.com/l/brtjp" target="_blank" class="social-link" style="border-color:rgba(192,144,48,0.2);background:rgba(192,144,48,0.04);">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(192,144,48,0.6)" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="sl-platform" style="color:rgba(192,144,48,0.7);">Koach Creative</span>
+          <span class="sl-handle">Get The Restored Mind</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 TEQOA · Inge Hodgman · All rights reserved</div>
+    <div class="footer-worlds">
+      <div class="fw-dot" style="background:#4a9a78;"></div>
+      <div class="fw-dot" style="background:#8a8278;"></div>
+      <div class="fw-dot" style="background:#5880b8;"></div>
+      <div class="fw-dot" style="background:#b06898;"></div>
+      <div class="fw-dot" style="background:#c09030;"></div>
+      <div class="fw-dot" style="background:#c09838;"></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// ── WORLD TOGGLE ──
+function toggleWorld(btn) {
+  const card = btn.closest('.world-card');
+  const isExpanded = card.classList.contains('expanded');
+  // close all
+  document.querySelectorAll('.world-card').forEach(c => {
+    c.classList.remove('expanded');
+    c.querySelector('.wc-toggle-text').textContent = 'Read more';
+  });
+  if (!isExpanded) {
+    card.classList.add('expanded');
+    btn.querySelector('.wc-toggle-text').textContent = 'Close';
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+}
+
+// ── SCROLL TO WORLD ──
+function scrollToWorld(world) {
+  const el = document.getElementById('world-' + world);
+  if (!el) return;
+  // switch to worlds section
+  document.getElementById('worlds').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 600);
+}
+
+// ── NAV SHRINK ON SCROLL ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.height = window.scrollY > 60 ? '52px' : '60px';
+});
+</script>
+
+</body>
+</html>
