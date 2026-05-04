@@ -686,6 +686,72 @@ footer::before {
   .crossing-section { padding: 5rem 1.5rem; }
   .ap-line { max-width: 24px; }
 }
+
+/* ── MOBILE WORLD GRID (hero) ── */
+.hero-worlds-mobile {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 50px;
+}
+.hwm-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.hwm-item:hover { box-shadow: 0 2px 12px rgba(38,33,28,0.08); }
+.hwm-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.hwm-item span {
+  font-family: 'Cinzel', serif;
+  font-size: 8px; letter-spacing: 0.1em;
+  color: var(--text-soft);
+}
+
+@media (max-width: 768px) {
+  /* hide desktop strip, show mobile grid */
+  .hero-worlds { display: none !important; }
+  .hero-worlds-mobile { display: grid !important; }
+
+  /* prevent hero title overflow */
+  .hero-name {
+    font-size: clamp(52px, 18vw, 90px) !important;
+    letter-spacing: 0.18em !important;
+    word-break: break-word;
+  }
+  .hero-sub { font-size: clamp(14px, 4vw, 18px) !important; }
+  .hero-eyebrow { font-size: 9px; }
+
+  /* section tags */
+  .section-tag { font-size: 8.5px; letter-spacing: 0.2em; }
+
+  /* testimony */
+  .testimony-pull { font-size: clamp(20px, 5.5vw, 30px) !important; }
+  .testimony-body { font-size: 16px; }
+  .tm-text { font-size: 16px; }
+
+  /* worlds intro */
+  .worlds-intro-title { font-size: clamp(22px, 5vw, 30px) !important; }
+  .worlds-intro-text { font-size: 16px; }
+
+  /* sound */
+  .sound-title { font-size: clamp(20px, 5vw, 28px) !important; }
+  .sound-sub { font-size: 15px; }
+  .sound-quote { font-size: 16px; }
+
+  /* manna */
+  .manna-quote { font-size: clamp(20px, 5vw, 28px) !important; }
+}
 </style>
 </head>
 <body>
@@ -737,6 +803,16 @@ footer::before {
       <div class="hw-dot" style="background:#8a6010;"></div>
       <div class="hw-name">Azarah</div>
     </div>
+  </div>
+
+  <!-- mobile world grid (shown only on small screens) -->
+  <div class="hero-worlds-mobile">
+    <div class="hwm-item" onclick="scrollToWorld('rechem')"><div class="hwm-dot" style="background:#2a7a5c;"></div><span>Rechem</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('demamah')"><div class="hwm-dot" style="background:#6a6560;"></div><span>Demamah</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('shamar')"><div class="hwm-dot" style="background:#2c5888;"></div><span>Shamar</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('marot')"><div class="hwm-dot" style="background:#8a3a68;"></div><span>Mar'ot</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('devorah')"><div class="hwm-dot" style="background:#8a5e10;"></div><span>Devorah</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('azarah')"><div class="hwm-dot" style="background:#8a6010;"></div><span>Azarah</span></div>
   </div>
 
   <div class="hero-scroll">
