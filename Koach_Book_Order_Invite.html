@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Restored Mind — Order | Koach Creative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--c:#1E1E1E;--cm:#272727;--cl:#333;--g:#C8973A;--gl:#E0B05A;--gm:#8C6420;--w:rgba(255,255,255,0.88);--wm:rgba(255,255,255,0.55);--ws:rgba(255,255,255,0.32);--ln:rgba(200,151,58,0.18);--ls:rgba(255,255,255,0.07);--gr:#25D366;--grd:#128C7E;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--c);color:var(--w);font-family:"Jost",system-ui,sans-serif;font-weight:300;min-height:100vh;}
+.page{max-width:820px;margin:0 auto;padding:28px 18px 60px;}
+.card{background:var(--cm);border:1px solid var(--ln);border-radius:6px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.55);opacity:0;transform:translateY(18px);animation:up 0.7s ease forwards;}
+@keyframes up{to{opacity:1;transform:translateY(0);}}
+.band{height:3px;background:linear-gradient(90deg,var(--gm),var(--g),var(--gl));}
+/* HEADER */
+.hdr{padding:40px 44px 32px;border-bottom:1px solid var(--ls);text-align:center;}
+.kc-lbl{font-size:9px;letter-spacing:.36em;text-transform:uppercase;color:var(--g);margin-bottom:18px;}
+.bk-title{font-family:"Playfair Display",Georgia,serif;font-size:clamp(26px,5vw,40px);font-weight:500;font-style:italic;color:#fff;line-height:1.2;margin-bottom:8px;}
+.bk-sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--wm);margin-bottom:20px;}
+.hdr-tag{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:15px;color:var(--wm);line-height:1.65;max-width:460px;margin:0 auto;}
+/* PRODUCTS */
+.prods{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--ls);}
+.prod{padding:22px 26px;border-right:1px solid var(--ls);cursor:pointer;transition:background .2s;}
+.prod:last-child{border-right:none;}
+.prod.sel{background:rgba(200,151,58,.07);}
+.p-chk{width:20px;height:20px;border-radius:4px;border:1.5px solid var(--cl);display:flex;align-items:center;justify-content:center;margin-bottom:10px;transition:all .2s;}
+.prod.sel .p-chk{background:var(--g);border-color:var(--g);}
+.p-chk svg{display:none;} .prod.sel .p-chk svg{display:block;}
+.p-type{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:5px;}
+.p-name{font-family:"Playfair Display",Georgia,serif;font-size:16px;font-weight:500;color:#fff;margin-bottom:4px;}
+.p-desc{font-size:12px;color:var(--wm);line-height:1.55;margin-bottom:10px;}
+.p-price{font-family:"Playfair Display",Georgia,serif;font-size:21px;font-weight:500;color:var(--gl);}
+.p-pnote{font-size:11px;color:var(--ws);margin-top:2px;}
+/* FORM */
+.fsec{padding:30px 44px;border-bottom:1px solid var(--ls);}
+.sec-ttl{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--g);margin-bottom:20px;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.ff{grid-column:span 2;}
+label{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--wm);margin-bottom:5px;}
+input,select,textarea{width:100%;background:var(--cl);border:1px solid rgba(255,255,255,.1);border-radius:4px;color:var(--w);font-family:"Jost",system-ui,sans-serif;font-size:14px;font-weight:300;padding:10px 13px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+input:focus,select:focus,textarea:focus{border-color:var(--g);}
+input::placeholder,textarea::placeholder{color:var(--ws);}
+select option{background:var(--c);}
+textarea{resize:vertical;min-height:76px;}
+.qty-row{display:flex;align-items:center;gap:10px;}
+.qb{width:36px;height:36px;border-radius:4px;border:1px solid rgba(255,255,255,.12);background:var(--cl);color:var(--w);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
+.qb:hover{border-color:var(--g);color:var(--g);}
+.qv{font-family:"Playfair Display",Georgia,serif;font-size:20px;color:#fff;min-width:30px;text-align:center;}
+/* TOTALS */
+.tsec{padding:18px 44px 26px;border-bottom:1px solid var(--ls);}
+.trow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;}
+.tlbl{font-size:12px;color:var(--wm);}
+.tval{font-size:14px;color:var(--w);}
+.trow.grand{border-top:1px solid var(--ln);margin-top:8px;padding-top:13px;}
+.trow.grand .tlbl{font-family:"Playfair Display",Georgia,serif;font-size:16px;font-style:italic;color:#fff;}
+.trow.grand .tval{font-family:"Playfair Display",Georgia,serif;font-size:22px;font-weight:500;color:var(--gl);}
+/* SUBMIT */
+.ssec{padding:22px 44px 30px;}
+.btn-rev{width:100%;background:var(--g);color:var(--c);border:none;border-radius:4px;padding:16px;font-family:"Jost",system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-rev:hover{background:var(--gl);}
+/* REVIEW */
+.rev{display:none;padding:30px 44px;border-bottom:1px solid var(--ls);}
+.rev.show{display:block;}
+.rev-id{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:16px;}
+.rev-ttl{font-family:"Playfair Display",Georgia,serif;font-size:22px;font-style:italic;color:#fff;margin-bottom:20px;}
+.rb{background:var(--c);border:1px solid var(--ls);border-radius:4px;padding:16px 18px;margin-bottom:12px;}
+.rb-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ws);margin-bottom:10px;}
+.rb-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;}
+.rb-k{color:var(--wm)}.rb-v{color:var(--w);text-align:right;max-width:60%;}
+.rb-tot{display:flex;justify-content:space-between;border-top:1px solid var(--ls);margin-top:9px;padding-top:11px;}
+.rb-tl{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:15px;color:#fff;}
+.rb-tv{font-family:"Playfair Display",Georgia,serif;font-size:20px;font-weight:500;color:var(--gl);}
+.rev-note{font-size:13px;color:var(--wm);line-height:1.65;margin-bottom:18px;font-style:italic;}
+.rev-btns{display:flex;flex-direction:column;gap:10px;}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--gr);color:#fff;border:none;border-radius:4px;padding:15px 22px;font-family:"Jost",system-ui,sans-serif;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}
+.btn-wa:hover{background:var(--grd);}
+.btn-em{display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--wm);border:1px solid var(--ls);border-radius:4px;padding:12px 22px;font-family:"Jost",system-ui,sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;}
+.btn-em:hover{border-color:var(--g);color:var(--g);}
+.btn-bk{background:none;border:none;color:var(--ws);font-family:"Jost",system-ui,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;padding:8px 0;text-align:center;transition:color .2s;width:100%;}
+.btn-bk:hover{color:var(--w);}
+/* SUCCESS */
+.suc{display:none;padding:50px 44px;text-align:center;border-bottom:1px solid var(--ls);}
+.suc.show{display:block;}
+.suc-ico{width:58px;height:58px;border-radius:50%;background:rgba(37,211,102,.12);border:1.5px solid var(--gr);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;color:var(--gr);}
+.suc-ttl{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:26px;color:#fff;margin-bottom:10px;}
+.suc-ref{font-size:11px;letter-spacing:.2em;color:var(--g);margin-bottom:20px;}
+.suc-txt{font-size:14px;color:var(--wm);line-height:1.78;margin-bottom:26px;}
+.psb{background:var(--c);border:1px solid var(--ln);border-radius:4px;padding:18px 22px;margin-bottom:26px;}
+.psb-lbl{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:9px;}
+.psb-id{font-family:"Playfair Display",Georgia,serif;font-size:24px;font-weight:500;color:#fff;margin-bottom:4px;}
+.psb-nm{font-size:12px;color:var(--wm);}
+.suc-vs{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:13px;color:var(--ws);line-height:1.65;}
+/* FOOTER */
+.cft{padding:18px 44px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ls);}
+.cf-brand{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:14px;color:var(--ws);}
+.cf-links{display:flex;gap:16px;}
+.cfl{font-size:10px;letter-spacing:.1em;color:var(--ws);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.cfl:hover{color:var(--g);}
+/* MOBILE */
+@media(max-width:600px){
+  .page{padding:14px 10px 40px;}
+  .hdr{padding:26px 18px 22px;}
+  .prods{grid-template-columns:1fr;}
+  .prod{border-right:none;border-bottom:1px solid var(--ls);}
+  .prod:last-child{border-bottom:none;}
+  .fsec,.tsec,.ssec,.rev,.suc{padding-left:18px;padding-right:18px;}
+  .fg{grid-template-columns:1fr;}.ff{grid-column:span 1;}
+  .cft{flex-direction:column;gap:12px;text-align:center;padding:16px 18px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="card">
+  <div class="band"></div>
+  <div class="hdr">
+    <div class="kc-lbl">Koach Creative &middot; Ingelein Hodgman</div>
+    <div class="bk-title">The Restored Mind</div>
+    <div class="bk-sub">The Neuro-Spiritual Blueprint for Healing Complex Trauma</div>
+    <div class="hdr-tag">&ldquo;Every word was written from wounds that became wisdom. This book was written for you.&rdquo;</div>
+  </div>
+  <div class="prods" id="step-prods">
+    <div class="prod sel" id="prod-book" onclick="toggle('book')">
+      <div class="p-chk"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#1E1E1E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-type">Hardcopy Book</div>
+      <div class="p-name">The Restored Mind</div>
+      <div class="p-desc">Physical book &middot; delivered to you &middot; R120 shipping</div>
+      <div class="p-price">R 250</div>
+      <div class="p-pnote">per copy + R120 shipping</div>
+    </div>
+    <div class="prod" id="prod-course" onclick="toggle('course')">
+      <div class="p-chk"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#1E1E1E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="p-type">Online Course</div>
+      <div class="p-name">The Restored Mind</div>
+      <div class="p-desc">11 modules &middot; 220+ flashcards &middot; Hebrew &amp; Greek word studies &middot; lifetime access</div>
+      <div class="p-price">R 600</div>
+      <div class="p-pnote">once-off &middot; instant digital access</div>
+    </div>
+  </div>
+  <div class="fsec" id="step-form">
+    <div class="sec-ttl">Your Details</div>
+    <div class="fg">
+      <div><label>Full Name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
+      <div><label>WhatsApp Number *</label><input type="tel" id="f-phone" placeholder="e.g. 082 123 4567"></div>
+      <div><label>Email Address</label><input type="email" id="f-email" placeholder="your@email.com"></div>
+      <div><label>City / Town *</label><input type="text" id="f-city" placeholder="e.g. Johannesburg"></div>
+      <div class="ff" id="addr-row"><label>Delivery Address (for book)</label><input type="text" id="f-addr" placeholder="Street &middot; suburb &middot; city &middot; postal code"></div>
+      <div id="qty-row"><label>Number of Books</label><div class="qty-row"><button class="qb" onclick="chQty(-1)">&#8722;</button><div class="qv" id="qv">1</div><button class="qb" onclick="chQty(1)">+</button></div></div>
+      <div><label>How did you hear about us?</label><select id="f-src"><option value="">Select&hellip;</option><option>Social media</option><option>Friend / family</option><option>Church / ministry</option><option>TEQOA music</option><option>Other</option></select></div>
+      <div class="ff"><label>Message / Dedication</label><textarea id="f-msg" placeholder="Any special request, dedication, or note to Inge&hellip;"></textarea></div>
+    </div>
+  </div>
+  <div class="tsec" id="step-tots">
+    <div class="trow" id="tr-book"><span class="tlbl">Book (<span id="tq">1</span> &times; R250)</span><span class="tval" id="tv-book">R 250</span></div>
+    <div class="trow" id="tr-ship"><span class="tlbl">Shipping</span><span class="tval">R 120</span></div>
+    <div class="trow" id="tr-course" style="display:none"><span class="tlbl">Online Course</span><span class="tval">R 600</span></div>
+    <div class="trow grand"><span class="tlbl">Total</span><span class="tval" id="tv-grand">R 370</span></div>
+  </div>
+  <div class="ssec" id="step-sub"><button class="btn-rev" onclick="goReview()">Review My Order &rarr;</button></div>
+  <div class="rev" id="step-rev">
+    <div class="rev-id" id="rev-id"></div>
+    <div class="rev-ttl">Review your order</div>
+    <div class="rb"><div class="rb-lbl">Order Summary</div><div id="rev-lines"></div><div class="rb-tot"><div class="rb-tl">Total</div><div class="rb-tv" id="rev-tot"></div></div></div>
+    <div class="rb"><div class="rb-lbl">Your Details</div><div id="rev-det"></div></div>
+    <div class="rev-note">Tap the button below &mdash; your WhatsApp will open with your order already written. Just press Send. Inge will reply to confirm and share payment details.</div>
+    <div class="rev-btns">
+      <a id="btn-wa" class="btn-wa" href="#" target="_blank" onclick="onSend()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.845L.036 23.964l6.27-1.648A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.513-5.168-1.408l-.371-.22-3.844 1.009 1.03-3.748-.241-.386A9.955 9.955 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Send Order via WhatsApp
+      </a>
+      <a id="btn-em" class="btn-em" href="#" target="_blank" onclick="onSend()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send via Email instead
+      </a>
+      <button class="btn-bk" onclick="goBack()">&larr; Edit my order</button>
+    </div>
+  </div>
+  <div class="suc" id="step-suc">
+    <div class="suc-ico">&#10003;</div>
+    <div class="suc-ttl">Order Sent!</div>
+    <div class="suc-ref" id="suc-ref"></div>
+    <div class="suc-txt">Thank you &mdash; Inge will reply on WhatsApp to confirm your order and share payment details. Please keep your order reference above handy.</div>
+    <div class="psb">
+      <div class="psb-lbl">Payment via PayShap</div>
+      <div class="psb-id">079 442 3830</div>
+      <div class="psb-nm">Ingelein Hodgman &middot; Absa &middot; works with Capitec, FNB, Standard Bank, Nedbank</div>
+    </div>
+    <div class="suc-vs">&ldquo;He has sent me to bind up the broken-hearted,<br>to proclaim freedom for the captives.&rdquo;<br><em>&mdash; Isaiah 61:1</em></div>
+  </div>
+  <div class="cft">
+    <div class="cf-brand">Koach Creative</div>
+    <div class="cf-links">
+      <a href="https://koachcreative.space" class="cfl" target="_blank">Course</a>
+      <a href="https://a.co/d/085Y7WJa" class="cfl" target="_blank">Amazon</a>
+      <a href="https://ingehodgman.github.io/teqoamusic" class="cfl" target="_blank">TEQOA</a>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+const WA='27794423830',EM='ingehodgman@gmail.com',BOOK=250,COURSE=600,SHIP=120;
+let qty=1,hasBook=true,hasCourse=false,orderId='',sent=false;
+function genId(){return 'KC-'+new Date().getFullYear()+'-'+Math.floor(1000+Math.random()*9000);}
+function toggle(p){
+  if(p==='book'){hasBook=!hasBook;document.getElementById('prod-book').classList.toggle('sel',hasBook);document.getElementById('addr-row').style.display=hasBook?'':'none';document.getElementById('qty-row').style.display=hasBook?'':'none';}
+  else{hasCourse=!hasCourse;document.getElementById('prod-course').classList.toggle('sel',hasCourse);}
+  upd();
+}
+function chQty(d){qty=Math.max(1,qty+d);document.getElementById('qv').textContent=qty;upd();}
+function upd(){
+  const bt=hasBook?BOOK*qty:0,st=hasBook?SHIP:0,ct=hasCourse?COURSE:0,grand=bt+st+ct;
+  document.getElementById('tr-book').style.display=hasBook?'':'none';
+  document.getElementById('tr-ship').style.display=hasBook?'':'none';
+  document.getElementById('tr-course').style.display=hasCourse?'':'none';
+  document.getElementById('tq').textContent=qty;
+  document.getElementById('tv-book').textContent='R '+bt.toLocaleString();
+  document.getElementById('tv-grand').textContent='R '+grand.toLocaleString();
+}
+function v(id){return(document.getElementById(id)?.value||'').trim();}
+function show(ids,val){ids.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=val;});}
+function goReview(){
+  if(!hasBook&&!hasCourse){alert('Please select at least one product.');return;}
+  if(!v('f-name')){alert('Please enter your full name.');return;}
+  if(!v('f-phone')){alert('Please enter your WhatsApp number.');return;}
+  if(!v('f-city')){alert('Please enter your city or town.');return;}
+  if(hasBook&&!v('f-addr')){alert('Please enter a delivery address for the book.');return;}
+  orderId=genId();
+  document.getElementById('rev-id').textContent='Order Reference: '+orderId;
+  document.getElementById('rev-tot').textContent=document.getElementById('tv-grand').textContent;
+  let lines='';
+  if(hasBook)lines+=`<div class="rb-row"><span class="rb-k">Hardcopy Book x${qty}</span><span class="rb-v">R ${(BOOK*qty).toLocaleString()}</span></div><div class="rb-row"><span class="rb-k">Shipping</span><span class="rb-v">R ${SHIP}</span></div>`;
+  if(hasCourse)lines+=`<div class="rb-row"><span class="rb-k">Online Course</span><span class="rb-v">R ${COURSE}</span></div>`;
+  document.getElementById('rev-lines').innerHTML=lines;
+  const fields=[['Name',v('f-name')],['WhatsApp',v('f-phone')],['Email',v('f-email')||''],['City',v('f-city')]];
+  if(hasBook)fields.push(['Delivery',v('f-addr')]);
+  if(v('f-src'))fields.push(['Source',v('f-src')]);
+  if(v('f-msg'))fields.push(['Note',v('f-msg')]);
+  document.getElementById('rev-det').innerHTML=fields.filter(f=>f[1]).map(([k,v])=>`<div class="rb-row"><span class="rb-k">${k}</span><span class="rb-v">${v}</span></div>`).join('');
+  let msg=`TEQOA x Koach Creative NEW ORDER\n\nRef: ${orderId}\nDate: ${new Date().toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'})}\n\nPRODUCTS\n`;
+  if(hasBook)msg+=`Book x${qty} = R ${(BOOK*qty).toLocaleString()}\nShipping = R ${SHIP}\n`;
+  if(hasCourse)msg+=`Course = R ${COURSE}\n`;
+  msg+=`TOTAL: ${document.getElementById('tv-grand').textContent}\n\nCUSTOMER\nName: ${v('f-name')}\nWhatsApp: ${v('f-phone')}`;
+  if(v('f-email'))msg+=`\nEmail: ${v('f-email')}`;
+  msg+=`\nCity: ${v('f-city')}`;
+  if(hasBook)msg+=`\nDelivery: ${v('f-addr')}`;
+  if(v('f-src'))msg+=`\nSource: ${v('f-src')}`;
+  if(v('f-msg'))msg+=`\nNote: ${v('f-msg')}`;
+  document.getElementById('btn-wa').href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  const subj=`Book Order - ${orderId} - ${v('f-name')}`;
+  document.getElementById('btn-em').href=`mailto:${EM}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(msg)}`;
+  show(['step-prods','step-form','step-tots','step-sub'],'none');
+  document.getElementById('step-rev').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goBack(){
+  document.getElementById('step-rev').classList.remove('show');
+  show(['step-prods','step-form','step-tots','step-sub'],'');
+}
+function onSend(){
+  if(sent)return;sent=true;
+  setTimeout(()=>{
+    document.getElementById('step-rev').classList.remove('show');
+    document.getElementById('suc-ref').textContent='Order Reference: '+orderId;
+    document.getElementById('step-suc').classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },700);
+}
+upd();
+</script>
+</body>
+</html>
