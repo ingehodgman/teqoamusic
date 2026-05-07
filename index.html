@@ -101,6 +101,49 @@ nav {
 }
 .nav-links a:hover { color: var(--text); }
 
+/* Hamburger */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-burger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Mobile dropdown */
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: #FFFFFF;
+  border-bottom: 2px solid var(--gold);
+  padding: 1rem 1.5rem 1.5rem;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover { color: #0A0A08; }
+
 /* ═══════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════ */
@@ -738,14 +781,33 @@ footer::before {
 @media (max-width: 768px) {
   /* NAV */
   nav { padding: 0 1.2rem; height: 56px; }
-  .nav-links { display: none; }
+  .nav-links { display: none !important; }
+  .nav-burger { display: flex !important; }
   .nav-logo span.small { display: none; }
 
   /* HERO */
   .hero { padding: 80px 1.2rem 3rem; }
   .hero-name { font-size: clamp(44px, 14vw, 72px) !important; letter-spacing: 0.14em !important; }
   .hero-sub { font-size: clamp(13px, 3.5vw, 17px) !important; margin-bottom: 32px; }
-  .hero-eyebrow { font-size: 8.5px; letter-spacing: 0.28em; }
+  .hero-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  .hero-kc-tag {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    padding: 4px 10px;
+    margin-bottom: 14px;
+  }
+  .hero-name, .hero-sub, .hero-worlds-mobile {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
 
   /* hide desktop wave strip, show mobile grid */
   .hero-worlds { display: none !important; }
@@ -831,12 +893,24 @@ footer::before {
     <li><a href="#connect">Connect</a></li>
     <li><a href="./dreams.html">Dreams</a></li>
 </ul>
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile nav dropdown -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#testimony" onclick="closeNav()">Testimony</a>
+  <a href="#worlds" onclick="closeNav()">Six Worlds</a>
+  <a href="#sound" onclick="closeNav()">The Sound</a>
+  <a href="#connect" onclick="closeNav()">Connect</a>
+  <a href="./dreams.html" onclick="closeNav()">Dreams</a>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
   <div class="hero-eyebrow">A daughter's healing journey · Prophetic Music</div>
-  <div style="display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#0A0A08;background:#FFE600;padding:5px 14px;border-radius:3px;margin-bottom:20px;">TEQOA · Ingelein Hodgman</div>
+  <div class="hero-kc-tag" style="display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#0A0A08;background:#FFE600;padding:5px 14px;border-radius:3px;margin-bottom:20px;">TEQOA · Ingelein Hodgman</div>
   <h1 class="hero-name">TEQOA</h1>
   <div style="width:48px;height:3px;background:#FFE600;margin:0 auto 20px;border-radius:2px;"></div>
   <p class="hero-sub">sound from the edge of the wilderness</p>
@@ -1402,6 +1476,22 @@ function scrollToWorld(world) {
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   nav.style.height = window.scrollY > 60 ? '52px' : '60px';
+});
+
+// ── HAMBURGER MENU ──
+function toggleNav() {
+  const menu = document.getElementById('navMobile');
+  const burger = document.querySelector('.nav-burger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('active');
+}
+function closeNav() {
+  document.getElementById('navMobile').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('active');
+}
+// Close on outside click
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('nav') && !e.target.closest('.nav-mobile')) closeNav();
 });
 </script>
 
