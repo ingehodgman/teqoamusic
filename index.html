@@ -23,12 +23,12 @@
   --border:    rgba(10,10,8,0.1);
   --border-mid:rgba(10,10,8,0.18);
 
-  --rechem:   #2a7a5c;
-  --demamah:  #6a6560;
-  --shamar:   #2c5888;
-  --marot:    #8a3a68;
-  --devorah:  #FFE600;
-  --azarah:   #FFE600;
+  --rechem:   #5BAADC;
+  --demamah:  #D4C4A0;
+  --shamar:   #2ABFBF;
+  --marot:    #7B4F9E;
+  --devorah:  #8B1A2F;
+  --azarah:   #C8960C;
 
   --gold: #FFE600;
   --gold-dark:#F0D800;
@@ -162,27 +162,44 @@ nav {
   margin-bottom: 56px;
   opacity: 0;
   animation: fadeUp 0.9s 0.9s ease forwards;
+  position: relative;
+}
+.hw-wave-wrap {
+  flex: 1;
+  display: flex; align-items: center;
+  height: 40px;
+  min-width: 28px;
 }
 .hw-item {
-  display: flex; flex-direction: column; align-items: center; gap: 7px;
-  padding: 0 18px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 0 14px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 .hw-item:hover { transform: translateY(-3px); }
-.hw-dot {
-  width: 9px; height: 9px; border-radius: 50%;
-  transition: transform 0.2s;
+.hw-colour-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 7px; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600;
+  text-align: center; line-height: 1.3;
+  margin-bottom: 2px;
 }
+.hw-dot {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: #FFFFFF;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.hw-dot.light { color: #0A0A08; }
 .hw-name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 8px; letter-spacing: 0.14em;
   color: var(--text-soft);
 }
-.hw-connector {
-  width: 40px; height: 1px;
-  background: var(--border);
-}
+
 
 .hero-scroll {
   position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
@@ -267,17 +284,14 @@ nav {
    THE CROSSING — arc visual
 ═══════════════════════════════════════════ */
 .crossing-section {
-  background: var(--text);
+  background: #FFFFFF;
   padding: 7rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 .crossing-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%,
-    rgba(192,144,48,0.1) 0%, transparent 65%);
+  display: none;
 }
 .crossing-inner {
   position: relative; z-index: 1;
@@ -286,19 +300,19 @@ nav {
 .crossing-tag {
   font-family: 'Jost', sans-serif;
   font-size: 9px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  text-transform: uppercase; color: rgba(10,10,8,0.4);
   margin-bottom: 28px;
 }
 .crossing-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 400; letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.9);
+  color: #0A0A08;
   line-height: 1.3; margin-bottom: 18px;
 }
 .crossing-sub {
   font-style: italic; font-size: 20px; font-weight: 300;
-  color: rgba(255,255,255,0.45);
+  color: rgba(10,10,8,0.5);
   margin-bottom: 52px; letter-spacing: 0.03em;
 }
 /* arc path */
@@ -312,34 +326,36 @@ nav {
 }
 .ap-circle {
   width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(10,10,8,0.2);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 10px; color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.04);
+  font-size: 10px; color: #FFFFFF;
   transition: all 0.3s; cursor: pointer;
 }
 .ap-circle:hover {
-  border-color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.08);
-  color: white;
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 .ap-name {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 7.5px; letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.35);
+  color: rgba(10,10,8,0.4);
 }
 .ap-line {
   flex: 1; height: 1px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(10,10,8,0.12);
   max-width: 48px;
 }
 .crossing-destination {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 11px; letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #FFE600;
+  color: #0A0A08;
   margin-top: 32px;
+  background: #E5E5E0;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 2px;
 }
 
 /* ═══════════════════════════════════════════
@@ -414,8 +430,14 @@ nav {
 .wc-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 9px; letter-spacing: 0.22em;
-  text-transform: uppercase; margin-bottom: 12px;
+  text-transform: uppercase; margin-bottom: 6px;
   opacity: 0.4;
+}
+.wc-colour {
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 600;
+  margin-bottom: 14px; opacity: 0.75;
 }
 .wc-text {
   font-size: 15px; font-weight: 300;
@@ -460,32 +482,32 @@ nav {
 /* world colours */
 .wc-rechem .wc-name  { color: var(--rechem); }
 .wc-rechem .wc-hebrew { color: var(--rechem); }
-.wc-rechem .wc-father { border-color: #7abda0; background: rgba(42,122,92,0.04); color: var(--rechem); }
+.wc-rechem .wc-father { border-color: rgba(91,170,220,0.4); background: rgba(91,170,220,0.04); color: var(--rechem); }
 .wc-rechem::before { background: var(--rechem); }
 
 .wc-demamah .wc-name  { color: var(--demamah); }
 .wc-demamah .wc-hebrew { color: var(--demamah); }
-.wc-demamah .wc-father { border-color: #b0a898; background: rgba(106,101,96,0.04); color: var(--demamah); }
+.wc-demamah .wc-father { border-color: rgba(212,196,160,0.6); background: rgba(212,196,160,0.06); color: var(--demamah); }
 .wc-demamah::before { background: var(--demamah); }
 
 .wc-shamar .wc-name  { color: var(--shamar); }
 .wc-shamar .wc-hebrew { color: var(--shamar); }
-.wc-shamar .wc-father { border-color: #88aad4; background: rgba(44,88,136,0.04); color: var(--shamar); }
+.wc-shamar .wc-father { border-color: rgba(42,191,191,0.4); background: rgba(42,191,191,0.04); color: var(--shamar); }
 .wc-shamar::before { background: var(--shamar); }
 
 .wc-marot .wc-name  { color: var(--marot); }
 .wc-marot .wc-hebrew { color: var(--marot); }
-.wc-marot .wc-father { border-color: #c898b8; background: rgba(138,58,104,0.04); color: var(--marot); }
+.wc-marot .wc-father { border-color: rgba(123,79,158,0.4); background: rgba(123,79,158,0.04); color: var(--marot); }
 .wc-marot::before { background: var(--marot); }
 
 .wc-devorah .wc-name  { color: var(--devorah); }
 .wc-devorah .wc-hebrew { color: var(--devorah); }
-.wc-devorah .wc-father { border-color: #d4a848; background: rgba(138,94,16,0.04); color: var(--devorah); }
+.wc-devorah .wc-father { border-color: rgba(139,26,47,0.4); background: rgba(139,26,47,0.04); color: var(--devorah); }
 .wc-devorah::before { background: var(--devorah); }
 
 .wc-azarah .wc-name  { color: var(--azarah); }
 .wc-azarah .wc-hebrew { color: var(--azarah); }
-.wc-azarah .wc-father { border-color: #d4b458; background: rgba(138,96,16,0.04); color: var(--azarah); }
+.wc-azarah .wc-father { border-color: rgba(200,150,12,0.4); background: rgba(200,150,12,0.04); color: var(--azarah); }
 .wc-azarah::before { background: var(--azarah); }
 
 /* ═══════════════════════════════════════════
@@ -524,6 +546,7 @@ nav {
   transition: all 0.2s;
 }
 .genre-pill:hover { background: var(--text); color: white; border-color: var(--text); }
+.genre-pill.active { background: var(--text); color: white; border-color: var(--text); }
 
 .sound-quote {
   font-style: italic; font-size: 20px; font-weight: 300;
@@ -534,6 +557,7 @@ nav {
    MANNA QUOTE — full width
 ═══════════════════════════════════════════ */
 .manna-section {
+  background: #FFE600;
   padding: 7rem 2rem;
   display: flex; flex-direction: column;
   align-items: center; text-align: center;
@@ -551,7 +575,7 @@ nav {
   color: var(--text); max-width: 740px;
   margin-bottom: 24px;
 }
-.manna-quote em { color: #B8860B; font-style: normal; }
+.manna-quote em { color: #FFFFFF; font-style: normal; font-weight: 500; }
 .manna-attr {
   font-family: 'Jost', sans-serif;
   font-size: 9px; letter-spacing: 0.22em;
@@ -562,47 +586,44 @@ nav {
    FOOTER / SOCIAL
 ═══════════════════════════════════════════ */
 footer {
-  background: var(--text);
+  background: #FFE600;
   padding: 5rem 2rem 3.5rem;
-  color: white;
+  color: var(--text);
   position: relative; overflow: hidden;
 }
 footer::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%,
-    rgba(192,144,48,0.08) 0%, transparent 60%);
+  display: none;
 }
 .footer-inner {
   position: relative; z-index: 1;
   max-width: 860px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 4rem; padding-bottom: 4rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(10,10,8,0.15);
 }
 .footer-left {}
 .footer-logo {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 32px; font-weight: 500;
-  letter-spacing: 0.38em; color: white;
-  opacity: 0.9; margin-bottom: 10px;
+  letter-spacing: 0.38em; color: #0A0A08;
+  opacity: 1; margin-bottom: 10px;
 }
 .footer-tagline {
   font-style: italic; font-size: 14px;
-  color: rgba(255,255,255,0.4); letter-spacing: 0.05em;
+  color: rgba(10,10,8,0.55); letter-spacing: 0.05em;
   margin-bottom: 28px;
 }
 .footer-testimony {
   font-size: 15px; font-weight: 300;
-  line-height: 1.8; color: rgba(255,255,255,0.5);
+  line-height: 1.8; color: rgba(10,10,8,0.65);
 }
-.footer-testimony strong { color: rgba(255,255,255,0.75); font-weight: 400; }
+.footer-testimony strong { color: #0A0A08; font-weight: 500; }
 
 .footer-right { padding-top: 6px; }
 .footer-section-title {
   font-family: 'Jost', sans-serif;
   font-size: 9px; letter-spacing: 0.26em;
-  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  text-transform: uppercase; color: #0A0A08;
   margin-bottom: 20px;
 }
 .social-links {
@@ -612,27 +633,27 @@ footer::before {
   display: flex; align-items: center; gap: 14px;
   text-decoration: none;
   padding: 12px 16px;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(10,10,8,0.12);
   border-radius: 4px;
   transition: all 0.2s;
-  background: rgba(255,255,255,0.04);
+  background: #FFFFFF;
 }
 .social-link:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: #FFE600;
+  background: #FFFFFF;
+  border-color: #0A0A08;
 }
 .sl-icon {
   width: 16px; height: 16px;
-  flex-shrink: 0; opacity: 0.75;
+  flex-shrink: 0; opacity: 0.85;
 }
 .sl-platform {
   font-family: 'Jost', sans-serif;
   font-size: 10px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: rgba(255,255,255,0.85);
+  text-transform: uppercase; color: #0A0A08;
 }
 .sl-handle {
   font-size: 13px; font-weight: 300;
-  color: rgba(255,255,255,0.55);
+  color: #0A0A08;
   margin-left: auto; font-style: italic;
 }
 
@@ -644,13 +665,13 @@ footer::before {
 }
 .footer-copy {
   font-family: 'Jost', sans-serif;
-  font-size: 9.5px; color: rgba(255,255,255,0.2);
+  font-size: 9.5px; color: #0A0A08;
   letter-spacing: 0.08em;
 }
 .footer-worlds {
   display: flex; gap: 8px;
 }
-.fw-dot { width: 6px; height: 6px; border-radius: 50%; opacity: 0.4; }
+.fw-dot { width: 6px; height: 6px; border-radius: 50%; opacity: 0.5; }
 
 /* ═══════════════════════════════════════════
    ANIMATIONS
@@ -805,44 +826,75 @@ footer::before {
 
   <div class="hero-worlds">
     <div class="hw-item" onclick="scrollToWorld('rechem')">
-      <div class="hw-dot" style="background:#2a7a5c;"></div>
+      <div class="hw-colour-tag" style="color:#5BAADC;">Heaven · Revelation</div>
+      <div class="hw-dot" style="background:#5BAADC;">1</div>
       <div class="hw-name">Rechem</div>
     </div>
-    <div class="hw-connector"></div>
+    <div class="hw-wave-wrap">
+      <svg viewBox="0 0 60 24" preserveAspectRatio="none" style="width:100%;height:24px;">
+        <path d="M0,12 Q5,2 10,12 Q15,22 20,12 Q25,2 30,12 Q35,22 40,12 Q45,2 50,12 Q55,22 60,12" fill="none" stroke="url(#wave1)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#5BAADC"/><stop offset="100%" stop-color="#D4C4A0"/></linearGradient></defs>
+      </svg>
+    </div>
     <div class="hw-item" onclick="scrollToWorld('demamah')">
-      <div class="hw-dot" style="background:#6a6560;"></div>
+      <div class="hw-colour-tag" style="color:#a09060;">Purity · Stillness</div>
+      <div class="hw-dot light" style="background:#D4C4A0;">2</div>
       <div class="hw-name">Demamah</div>
     </div>
-    <div class="hw-connector"></div>
+    <div class="hw-wave-wrap">
+      <svg viewBox="0 0 60 24" preserveAspectRatio="none" style="width:100%;height:24px;">
+        <path d="M0,12 Q5,22 10,12 Q15,2 20,12 Q25,22 30,12 Q35,2 40,12 Q45,22 50,12 Q55,2 60,12" fill="none" stroke="url(#wave2)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#D4C4A0"/><stop offset="100%" stop-color="#2ABFBF"/></linearGradient></defs>
+      </svg>
+    </div>
     <div class="hw-item" onclick="scrollToWorld('shamar')">
-      <div class="hw-dot" style="background:#2c5888;"></div>
+      <div class="hw-colour-tag" style="color:#2ABFBF;">Healing · Protection</div>
+      <div class="hw-dot" style="background:#2ABFBF;">3</div>
       <div class="hw-name">Shamar</div>
     </div>
-    <div class="hw-connector"></div>
+    <div class="hw-wave-wrap">
+      <svg viewBox="0 0 60 24" preserveAspectRatio="none" style="width:100%;height:24px;">
+        <path d="M0,12 Q5,2 10,12 Q15,22 20,12 Q25,2 30,12 Q35,22 40,12 Q45,2 50,12 Q55,22 60,12" fill="none" stroke="url(#wave3)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="wave3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2ABFBF"/><stop offset="100%" stop-color="#7B4F9E"/></linearGradient></defs>
+      </svg>
+    </div>
     <div class="hw-item" onclick="scrollToWorld('marot')">
-      <div class="hw-dot" style="background:#8a3a68;"></div>
+      <div class="hw-colour-tag" style="color:#7B4F9E;">Royalty · Vision</div>
+      <div class="hw-dot" style="background:#7B4F9E;">4</div>
       <div class="hw-name">Mar'ot</div>
     </div>
-    <div class="hw-connector"></div>
+    <div class="hw-wave-wrap">
+      <svg viewBox="0 0 60 24" preserveAspectRatio="none" style="width:100%;height:24px;">
+        <path d="M0,12 Q5,22 10,12 Q15,2 20,12 Q25,22 30,12 Q35,2 40,12 Q45,22 50,12 Q55,2 60,12" fill="none" stroke="url(#wave4)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="wave4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7B4F9E"/><stop offset="100%" stop-color="#8B1A2F"/></linearGradient></defs>
+      </svg>
+    </div>
     <div class="hw-item" onclick="scrollToWorld('devorah')">
-      <div class="hw-dot" style="background:#8a5e10;"></div>
+      <div class="hw-colour-tag" style="color:#8B1A2F;">Covenant · Fierce Love</div>
+      <div class="hw-dot" style="background:#8B1A2F;">5</div>
       <div class="hw-name">Devorah</div>
     </div>
-    <div class="hw-connector"></div>
+    <div class="hw-wave-wrap">
+      <svg viewBox="0 0 60 24" preserveAspectRatio="none" style="width:100%;height:24px;">
+        <path d="M0,12 Q5,2 10,12 Q15,22 20,12 Q25,2 30,12 Q35,22 40,12 Q45,2 50,12 Q55,22 60,12" fill="none" stroke="url(#wave5)" stroke-width="1.5" stroke-linecap="round"/>
+        <defs><linearGradient id="wave5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8B1A2F"/><stop offset="100%" stop-color="#C8960C"/></linearGradient></defs>
+      </svg>
+    </div>
     <div class="hw-item" onclick="scrollToWorld('azarah')">
-      <div class="hw-dot" style="background:#8a6010;"></div>
+      <div class="hw-colour-tag" style="color:#C8960C;">Glory · Holy Place</div>
+      <div class="hw-dot" style="background:#C8960C;">6</div>
       <div class="hw-name">Azarah</div>
     </div>
   </div>
 
   <!-- mobile world grid (shown only on small screens) -->
   <div class="hero-worlds-mobile">
-    <div class="hwm-item" onclick="scrollToWorld('rechem')"><div class="hwm-dot" style="background:#2a7a5c;"></div><span>Rechem</span></div>
-    <div class="hwm-item" onclick="scrollToWorld('demamah')"><div class="hwm-dot" style="background:#6a6560;"></div><span>Demamah</span></div>
-    <div class="hwm-item" onclick="scrollToWorld('shamar')"><div class="hwm-dot" style="background:#2c5888;"></div><span>Shamar</span></div>
-    <div class="hwm-item" onclick="scrollToWorld('marot')"><div class="hwm-dot" style="background:#8a3a68;"></div><span>Mar'ot</span></div>
-    <div class="hwm-item" onclick="scrollToWorld('devorah')"><div class="hwm-dot" style="background:#8a5e10;"></div><span>Devorah</span></div>
-    <div class="hwm-item" onclick="scrollToWorld('azarah')"><div class="hwm-dot" style="background:#8a6010;"></div><span>Azarah</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('rechem')"><div class="hwm-dot" style="background:#5BAADC;"></div><span>Rechem</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('demamah')"><div class="hwm-dot" style="background:#D4C4A0;"></div><span>Demamah</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('shamar')"><div class="hwm-dot" style="background:#2ABFBF;"></div><span>Shamar</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('marot')"><div class="hwm-dot" style="background:#7B4F9E;"></div><span>Mar'ot</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('devorah')"><div class="hwm-dot" style="background:#8B1A2F;"></div><span>Devorah</span></div>
+    <div class="hwm-item" onclick="scrollToWorld('azarah')"><div class="hwm-dot" style="background:#C8960C;"></div><span>Azarah</span></div>
   </div>
 
   <div class="hero-scroll">
@@ -886,32 +938,32 @@ footer::before {
 
     <div class="arc-path">
       <div class="ap-world">
-        <div class="ap-circle" style="border-color:rgba(42,122,92,0.5);color:#4a9a78;" onclick="scrollToWorld('rechem')">I</div>
+        <div class="ap-circle" style="background:#5BAADC;border-color:#5BAADC;color:#FFFFFF;" onclick="scrollToWorld('rechem')">I</div>
         <div class="ap-name" style="color:rgba(74,154,120,0.6);">Rechem</div>
       </div>
       <div class="ap-line"></div>
       <div class="ap-world">
-        <div class="ap-circle" style="border-color:rgba(106,101,96,0.5);color:#8a8278;" onclick="scrollToWorld('demamah')">II</div>
+        <div class="ap-circle" style="background:#D4C4A0;border-color:#D4C4A0;color:#0A0A08;" onclick="scrollToWorld('demamah')">II</div>
         <div class="ap-name" style="color:rgba(138,130,120,0.6);">Demamah</div>
       </div>
       <div class="ap-line"></div>
       <div class="ap-world">
-        <div class="ap-circle" style="border-color:rgba(44,88,136,0.5);color:#82aad8;" onclick="scrollToWorld('shamar')">III</div>
+        <div class="ap-circle" style="background:#2ABFBF;border-color:#2ABFBF;color:#FFFFFF;" onclick="scrollToWorld('shamar')">III</div>
         <div class="ap-name" style="color:rgba(130,170,216,0.6);">Shamar</div>
       </div>
       <div class="ap-line"></div>
       <div class="ap-world">
-        <div class="ap-circle" style="border-color:rgba(138,58,104,0.5);color:#d890b8;" onclick="scrollToWorld('marot')">IV</div>
+        <div class="ap-circle" style="background:#7B4F9E;border-color:#7B4F9E;color:#FFFFFF;" onclick="scrollToWorld('marot')">IV</div>
         <div class="ap-name" style="color:rgba(216,144,184,0.6);">Mar'ot</div>
       </div>
       <div class="ap-line"></div>
       <div class="ap-world">
-        <div class="ap-circle" style="border-color:rgba(138,94,16,0.5);color:#e0a840;" onclick="scrollToWorld('devorah')">V</div>
+        <div class="ap-circle" style="background:#8B1A2F;border-color:#8B1A2F;color:#FFFFFF;" onclick="scrollToWorld('devorah')">V</div>
         <div class="ap-name" style="color:rgba(224,168,64,0.6);">Devorah</div>
       </div>
       <div class="ap-line"></div>
       <div class="ap-world">
-        <div class="ap-circle" style="border-color:rgba(138,96,16,0.5);color:#e8c070;" onclick="scrollToWorld('azarah')">VI</div>
+        <div class="ap-circle" style="background:#C8960C;border-color:#C8960C;color:#FFFFFF;" onclick="scrollToWorld('azarah')">VI</div>
         <div class="ap-name" style="color:rgba(232,192,112,0.6);">Azarah</div>
       </div>
     </div>
@@ -942,6 +994,7 @@ footer::before {
         <div class="wc-hebrew">רֶחֶם</div>
       </div>
       <div class="wc-title">Womb · Compassion</div>
+      <div class="wc-colour" style="color:var(--rechem);">Sky Blue · Heaven · Holy Spirit · Divine Revelation</div>
       <p class="wc-text">The journey begins not with doing but with <strong>receiving</strong>. Before the wound, before the performance, before she learned to earn her place — she was woven together and known. Healing starts when you stop trying to earn what was always yours.</p>
       <div class="wc-expand">
         <div class="wc-father">
@@ -969,6 +1022,7 @@ footer::before {
         <div class="wc-hebrew">דְּמָמָה</div>
       </div>
       <div class="wc-title">Thin Silence · Still Voice</div>
+      <div class="wc-colour" style="color:#a09060;">Cream · Purity · Surrender · Stillness Before God</div>
       <p class="wc-text">She stops performing. She sits in the dirt of exactly where she is and tells the truth. <strong>The Father is not frightened by her exhaustion.</strong> He comes to her there — with gentleness, not rebuke. Her honesty is the door He walks through.</p>
       <div class="wc-expand">
         <div class="wc-father">
@@ -996,6 +1050,7 @@ footer::before {
         <div class="wc-hebrew">שָׁמַר</div>
       </div>
       <div class="wc-title">To Watch · To Keep · To Guard</div>
+      <div class="wc-colour" style="color:var(--shamar);">Turquoise · Healing · Protection · The Guardian God</div>
       <p class="wc-text">The long middle. The season that doesn't look like progress but is quietly doing the deepest work. She is learning that <strong>hiddenness is not abandonment</strong> — every 3am prayer, every vigil, every unseen faithful act is witnessed by the Father.</p>
       <div class="wc-expand">
         <div class="wc-father">
@@ -1023,6 +1078,7 @@ footer::before {
         <div class="wc-hebrew">מַרְאוֹת</div>
       </div>
       <div class="wc-title">Visions · Plural Sight</div>
+      <div class="wc-colour" style="color:var(--marot);">Purple · Royalty · Prophetic Vision · Kingly-Priestly Anointing</div>
       <p class="wc-text">After the long watching, her eyes begin to open. The Father begins to show her who she truly is — <strong>not the image the wound painted</strong>, but the truth He has always held. Identity is slowly, tenderly restored from the inside out.</p>
       <div class="wc-expand">
         <div class="wc-father">
@@ -1050,6 +1106,7 @@ footer::before {
         <div class="wc-hebrew">דְּבוֹרָה</div>
       </div>
       <div class="wc-title">Arise · Mother in Israel</div>
+      <div class="wc-colour" style="color:var(--devorah);">Maroon · Covenant Blood · Sacrifice · Fierce Love</div>
       <p class="wc-text">She carries every scar — but what was broken has become her <strong>authority</strong>. She rises not from striving but from the deep settled security of a daughter who knows whose she is. The wound is not hidden. It has been <strong>redeemed</strong>.</p>
       <div class="wc-expand">
         <div class="wc-father">
@@ -1077,6 +1134,7 @@ footer::before {
         <div class="wc-hebrew">עֲזָרָה</div>
       </div>
       <div class="wc-title">The Court · The Gathering Place</div>
+      <div class="wc-colour" style="color:var(--azarah);">Gold · The Glory of God · Refined Faith · The Holy Place</div>
       <p class="wc-text">She opens her arms. Not because the healing is complete — but because she has walked far enough to reach back and say: <em>come. there is a way through.</em> Her healed life has become an <strong>open door</strong>. The court is built. Everyone can enter.</p>
       <div class="wc-expand">
         <div class="wc-father">
@@ -1103,12 +1161,20 @@ footer::before {
     <h2 class="sound-title reveal">Healing is not one sound.<br>It is all of them.</h2>
     <p class="sound-sub reveal reveal-delay-1">Ancient Hebrew words. Ancient truth. Set to music that moves your body and reaches the places words alone cannot touch.</p>
     <div class="genre-row reveal reveal-delay-2">
-      <span class="genre-pill">Prophetic EDM</span>
-      <span class="genre-pill">Bioacoustic Worship</span>
-      <span class="genre-pill">Indie Folk</span>
-      <span class="genre-pill">Minimal Techno</span>
-      <span class="genre-pill">World Music</span>
-      <span class="genre-pill">Sacred Soundscape</span>
+      <span class="genre-pill active">Bioacoustic Womb Ambience</span>
+      <span class="genre-pill">EDM</span>
+      <span class="genre-pill">Psychedelic</span>
+      <span class="genre-pill">Indie</span>
+      <span class="genre-pill">Techno</span>
+      <span class="genre-pill">Didgeridoo</span>
+      <span class="genre-pill">Tropical</span>
+      <span class="genre-pill">Acoustic</span>
+      <span class="genre-pill">Prophetic Worship</span>
+      <span class="genre-pill">Intimate</span>
+      <span class="genre-pill">Retro</span>
+      <span class="genre-pill">Heartbeat Pulses</span>
+      <span class="genre-pill">Shofar</span>
+      <span class="genre-pill">Tekiah Blasts</span>
     </div>
     <p class="sound-quote reveal reveal-delay-3">"Music that sounds like the wilderness and the womb<br>and the war cry and the gathering — all at once."</p>
   </div>
@@ -1198,42 +1264,42 @@ footer::before {
       <div class="social-links">
 
         <a href="https://youtube.com/@ingeleinhodgman?si=GrQ2LkeqMzeH7ajb" target="_blank" class="social-link">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(255,255,255,0.5)" stroke="none"/></svg>
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0A0A08" stroke="none"/></svg>
           <span class="sl-platform">YouTube</span>
           <span class="sl-handle">@ingeleinhodgman</span>
         </a>
 
         <a href="https://suno.com/@ingehodgman" target="_blank" class="social-link">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
           <span class="sl-platform">Suno</span>
           <span class="sl-handle">@ingehodgman</span>
         </a>
 
-        <a href="./Koach_Order_Form.html" target="_blank" class="social-link" style="border-color:rgba(130,170,216,0.2);background:rgba(44,88,136,0.04);">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(130,170,216,0.6)" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span class="sl-platform" style="color:rgba(130,170,216,0.7);">The Restored Mind</span>
+        <a href="./Koach_Order_Form.html" target="_blank" class="social-link" style="">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="sl-platform" style="color:#0A0A08;">The Restored Mind</span>
           <span class="sl-handle">Order Hardcopy · R250</span>
         </a>
 
-        <a href="https://a.co/d/085Y7WJa" target="_blank" class="social-link" style="border-color:rgba(130,170,216,0.1);background:rgba(44,88,136,0.02);">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(130,170,216,0.4)" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          <span class="sl-platform" style="color:rgba(130,170,216,0.5);">The Restored Mind</span>
+        <a href="https://a.co/d/085Y7WJa" target="_blank" class="social-link" style="">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span class="sl-platform" style="color:#0A0A08;">The Restored Mind</span>
           <span class="sl-handle">Order on Amazon</span>
         </a>
 
-        <a href="https://ingequest.gumroad.com/l/brtjp" target="_blank" class="social-link" style="border-color:rgba(192,144,48,0.2);background:rgba(192,144,48,0.04);">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(192,144,48,0.6)" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <span class="sl-platform" style="color:rgba(192,144,48,0.7);">Koach Creative</span>
+        <a href="https://ingequest.gumroad.com/l/brtjp" target="_blank" class="social-link" style="">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="sl-platform" style="color:#0A0A08;">Koach Creative</span>
           <span class="sl-handle">Get The Restored Mind</span>
         </a>
-        <a href="./dreams.html" class="social-link" style="border-color:rgba(138,58,104,0.2);background:rgba(138,58,104,0.04);">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(176,104,152,0.6)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          <span class="sl-platform" style="color:rgba(176,104,152,0.6);">MAR&#8217;OT &middot; Dreams</span>
+        <a href="./dreams.html" class="social-link" style="">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          <span class="sl-platform" style="color:#0A0A08;">MAR&#8217;OT &middot; Dreams</span>
           <span class="sl-handle">Creative Thinking Space</span>
         </a>
-        <a href="./symbols.html" class="social-link" style="border-color:rgba(138,58,104,0.12);background:rgba(138,58,104,0.02);">
-          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(176,104,152,0.4)" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          <span class="sl-platform" style="color:rgba(176,104,152,0.4);">MAR&#8217;OT &middot; Symbols</span>
+        <a href="./symbols.html" class="social-link" style="">
+          <svg class="sl-icon" viewBox="0 0 24 24" fill="none" stroke="#0A0A08" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span class="sl-platform" style="color:#0A0A08;">MAR&#8217;OT &middot; Symbols</span>
           <span class="sl-handle">Biblical Symbol Guide</span>
         </a>
 
@@ -1244,12 +1310,12 @@ footer::before {
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 TEQOA · Inge Hodgman · All rights reserved</div>
     <div class="footer-worlds">
-      <div class="fw-dot" style="background:#4a9a78;"></div>
-      <div class="fw-dot" style="background:#8a8278;"></div>
-      <div class="fw-dot" style="background:#5880b8;"></div>
-      <div class="fw-dot" style="background:#b06898;"></div>
-      <div class="fw-dot" style="background:#FFE600;"></div>
-      <div class="fw-dot" style="background:#c09838;"></div>
+      <div class="fw-dot" style="background:#5BAADC;"></div>
+      <div class="fw-dot" style="background:#D4C4A0;"></div>
+      <div class="fw-dot" style="background:#2ABFBF;"></div>
+      <div class="fw-dot" style="background:#7B4F9E;"></div>
+      <div class="fw-dot" style="background:#8B1A2F;"></div>
+      <div class="fw-dot" style="background:#C8960C;"></div>
     </div>
   </div>
 </footer>
